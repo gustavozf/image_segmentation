@@ -11,6 +11,8 @@ def get_histogram(img_out, img_out_path):
     histgram = np.array([len(np.where(img_out == i)[0])
                          for i in np.arange(1, img_out.max())])
     plt.bar(range(len(histgram)), histgram)
+    plt.xlabel('Objeto')
+    plt.ylabel('# de Pixels')
     plt.savefig(img_out_path + 'output_histogram.png')
 
 
