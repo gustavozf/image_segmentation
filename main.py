@@ -10,11 +10,11 @@ def get_histogram(img_out, img_out_path):
     print("Salvando histograma...")
     histgram = np.array([len(np.where(img_out == i)[0])
                          for i in np.arange(1, img_out.max()+1)])
-    plt.clf()
     plt.bar(range(len(histgram)), histgram)
     plt.xlabel('Objeto')
     plt.ylabel('# de Pixels')
     plt.savefig(img_out_path + 'output_histogram.png')
+    plt.clf()
 
 
 def color_objects(img_out, count):
@@ -41,14 +41,14 @@ def segmentation(img_in_path, img_out_path):
 
     get_histogram(img_out, img_out_path)
     cv2.imwrite(img_out_path + "output.png", color_objects(img_out, count))
-    print(f"Saída salva em: {img_in_path}")
+    print(f"Saída salva em: {img_out_path}")
 
 
 def main():
-    segmentation('./input_imgs/0/0.png', './input_imgs/0/'),
-    segmentation('./input_imgs/1/1.png', './input_imgs/1/'),
-    segmentation('./input_imgs/2/2.png', './input_imgs/2/'),
-    segmentation('./input_imgs/3/3.png', './input_imgs/3/')
-
+    for i in range(4):
+        print(f"Imagem: {i}.png")
+        segmentation(f'./img_samples/{i}/{i}.png', f'./img_samples/{i}/')
+        print()
+    
 if __name__ == "__main__":
     main()

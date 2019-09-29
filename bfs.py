@@ -1,4 +1,4 @@
-def get_neighbors(i, j, MAX_HEI, MAX_WID):
+def get_neighbors(i, j, max_hei, max_wid):
     neighbors = [(i, j+1),
                  (i, j-1),
                  (i+1, j),
@@ -6,9 +6,9 @@ def get_neighbors(i, j, MAX_HEI, MAX_WID):
 
     return [z for z in neighbors
             if not False in [z[0] >= 0,
-                             z[0] < MAX_HEI,
+                             z[0] < max_hei,
                              z[1] >= 0,
-                             z[1] < MAX_WID]]
+                             z[1] < max_wid]]
 
 
 def bfs(img_in, img_out, i, j, gray_value):
