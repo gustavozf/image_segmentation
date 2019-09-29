@@ -9,7 +9,8 @@ from bfs import bfs
 def get_histogram(img_out, img_out_path):
     print("Salvando histograma...")
     histgram = np.array([len(np.where(img_out == i)[0])
-                         for i in np.arange(1, img_out.max())])
+                         for i in np.arange(1, img_out.max()+1)])
+    plt.clf()
     plt.bar(range(len(histgram)), histgram)
     plt.savefig(img_out_path + 'output_histogram.png')
 
@@ -28,7 +29,6 @@ def segmentation(img_in_path, img_out_path):
     hei, wid = img_in.shape[:2]
     img_out = np.zeros((hei, wid))
 
-    print(img_in.max())
     print("Segmentando imagem...")
     for i in range(hei):
         for j in range(wid):
@@ -43,7 +43,10 @@ def segmentation(img_in_path, img_out_path):
 
 
 def main():
-    segmentation('./input_imgs/numbers_binary.png', './input_imgs/')
+    segmentation('./input_imgs/0/0.png', './input_imgs/0/'),
+    segmentation('./input_imgs/1/1.png', './input_imgs/1/'),
+    segmentation('./input_imgs/2/2.png', './input_imgs/2/'),
+    segmentation('./input_imgs/3/3.png', './input_imgs/3/')
 
 if __name__ == "__main__":
     main()
